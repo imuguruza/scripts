@@ -86,6 +86,8 @@ while 1:
 #		print "Va: %.4fV " % (volts)
 #		print "Current Consumed: %.4fA |\n" % (volts/0.7)			
 
+
+
         print ('------------')
 	print ('| DEVICE 1 |')
 	print ('------------')
@@ -97,8 +99,10 @@ while 1:
         sleep (1)
 	# Reading all channels
 	volts = adc.readADCSingleEnded(0, gain, sps) / 1000
-	print "Vin: %.4fV " % (volts)
-	print "PoE Volts: %.4fV \t |" % (volts*11)
+	#print "Vin: %.4fV " % (volts)
+	print "Vin: %.4fV " % (volts- 0.0009)
+        #print "PoE Volts: %.4fV \t |" % (volts*11)	
+	print "PoE Volts: %.4fV \t |" % ((volts-0.0009)*10.965)
         
         # Switch to ch1
         GPIO.output(s0, GPIO.HIGH)
@@ -106,8 +110,8 @@ while 1:
 	sleep (1)
 	# Reading all channels
 	volts = adc.readADCSingleEnded(0, gain, sps) / 1000
-	print "Va: %.4fV " % (volts)
-	print "Current Consumed: %.4fA |\n" % (volts/0.7)
+	print "Va: %.4fV " % (volts-0.0013)
+	print "Current Consumed: %.4fA |\n" % ((volts-0.0013)/(10*0.3))
 
         sleep (1)
 
@@ -122,7 +126,7 @@ while 1:
         sleep (1)        
 	# Reading all channels
         volts = adc.readADCSingleEnded(0, gain, sps) / 1000
-        print "Vin: %.4fV " % (volts)
+        print "Vin: %.4fV " % (volts- 0.0009)
         print "PoE Volts: %.4fV \t |" % (volts*11)
 
 
@@ -133,7 +137,7 @@ while 1:
         # Reading all channels
         volts = adc.readADCSingleEnded(0, gain, sps) / 1000
         print "Va: %.4fV " % (volts)
-        print "Current Consumed: %.4fA |\n" % (volts/0.7)
+        print "Current Consumed: %.4fA |\n" % (volts/(10*0.3))
 
         sleep (1)
 
@@ -161,6 +165,6 @@ while 1:
         # Reading all channels
         volts = adc.readADCSingleEnded(0, gain, sps) / 1000
         print "Va: %.4fV " % (volts)
-        print "Current Consumed: %.4fA |\n" % (volts/0.7)
+        print "Current Consumed: %.4fA |\n" % (volts/(0.3*10))
 
 	sleep (1)
